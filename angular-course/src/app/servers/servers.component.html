@@ -18,11 +18,25 @@
 </ng-template>
 
 
-<app-server></app-server>
-<app-server></app-server>
+<app-server *ngFor="let server of servers"></app-server>
+
 
 <hr>
 <label>Username</label>
 <input type="text" class="form-control" [(ngModel)]="userName">
 <button class="btn btn-secondary" [disabled]="!userName" (click)="resetName($event)">Reset</button>
 <p>Username: {{ userName }}</p>
+
+
+<hr>
+<label>Display Details</label>
+<button
+  class="btn btn-primary form-control"
+  (click)="showDeets()">Show
+</button>
+<p
+  *ngIf="showDeets; else show">No Details to show.
+</p>
+<ng-template #show>
+  <p>{{ details }}</p>
+</ng-template>
