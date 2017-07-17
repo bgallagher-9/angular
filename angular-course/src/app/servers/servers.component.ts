@@ -12,8 +12,10 @@ export class ServersComponent implements OnInit {
   serverCreated = false;
   userName = '';
   servers = ['TestServer', 'TestServer 2'];
-  details = 'Your password is tuna.'
-  detailsOn = false
+  details = 'Your password is tuna.';
+  detailsOn = false;
+  log = [];
+  v: number;
 
   constructor() {
     setTimeout(() => {
@@ -42,6 +44,11 @@ export class ServersComponent implements OnInit {
 
   showDeets() {
     this.detailsOn = (!this.detailsOn);
+    console.log('click', this.detailsOn);
+    // this.log.push(this.log.length+1);
+    this.log.push(new Date());
+    console.log(this.log);
   }
 
+ 
 }

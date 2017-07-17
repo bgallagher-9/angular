@@ -35,8 +35,14 @@
   (click)="showDeets()">Show
 </button>
 <p
-  *ngIf="showDeets; else show">No Details to show.
+  *ngIf="detailsOn === false; else show">No Details to show.
 </p>
 <ng-template #show>
   <p>{{ details }}</p>
+
 </ng-template>
+<p
+  *ngFor="let logItem of log; let i  = index"
+  [ngStyle]="{backgroundColor: i >= 4 ? 'red' : 'transparent'}">
+  Details displayed {{ logItem }} times.
+</p>
