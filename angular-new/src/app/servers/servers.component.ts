@@ -11,8 +11,13 @@ export class ServersComponent implements OnInit {
   serverName = '';
   name = '';
   createName = '';
-  allowClearName = false;
-  serverCreated = false
+  serverCreated = false;
+  servers = [];
+  detailsClicked = 'No details.';
+  clickedDetails = false;
+  numberOfClicks = [];
+  clicked = 1;
+
 
   constructor() {
     setTimeout(() => {
@@ -25,7 +30,8 @@ export class ServersComponent implements OnInit {
 
   onCreateServer() {
     this.serverCreated = true;
-    this.serverCreationStatus = 'Server ' + this.serverName + ' was created.'
+    this.serverCreationStatus = 'Server ' + this.serverName + ' was created.';
+    this.servers.push(this.serverName);
   }
 
   onUpdateServerName(event: Event) {
@@ -43,6 +49,21 @@ export class ServersComponent implements OnInit {
   //
   // onClearName() {
   //   this.name = '';
+  // }
+
+  onDetailsClick() {
+    this.detailsClicked = 'Tuna is the secret word for the day.';
+    this.clickedDetails = !this.clickedDetails;
+
+    this.numberOfClicks.push(this.numberOfClicks.length + 1);
+    console.log(this.numberOfClicks);
+  }
+
+  // getClicks() {
+  //   return this.numberOfClicks.length > 5 ? 'blue' : 'white';
+  // }
+  // getFontClicks() {
+  //   return this.numberOfClicks.length > 5 ? 'white' : 'black';
   // }
 
 }

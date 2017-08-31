@@ -20,8 +20,8 @@
 <br>
 <p *ngIf="serverCreated; else noServer">Server {{ serverName }} was created.</p>
 <ng-template #noServer>No server created.</ng-template>
-<app-server></app-server>
-<app-server></app-server>
+<app-server *ngFor="let server of servers"></app-server>
+<!-- <app-server></app-server> -->
 <!-- <hr>
 <label>UserName</label>
 <br> -->
@@ -32,3 +32,18 @@
 <button class="btn btn-danger" (click)="onClearName()" [disabled]="name === ''">Clear</button>
 
 <p>{{ createName }}</p> -->
+<hr>
+<button
+  class="btn btn-primary"
+  (click)="onDetailsClick()"
+
+  >Display Details
+</button>
+<br>
+<p *ngIf="clickedDetails; else noDetails">{{ detailsClicked }}</p>
+<ng-template #noDetails>No Details.</ng-template>
+<p
+  *ngFor="let clicks of numberOfClicks"
+  [ngStyle]="{backgroundColor: clicks >= 5 ? 'blue' : 'transparent', color: clicks >= 5 ? 'white' : black}"
+  >Details clicked {{ clicks }} times.
+</p>
